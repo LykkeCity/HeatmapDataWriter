@@ -72,7 +72,7 @@ namespace Lykke.Service.HeatmapDataWriter.DomainServices
 
             // report
             Console.WriteLine("===== coinmarketcup top 10 =====");
-            foreach (var item in data.OrderByDescending(e => e.MarketCapUsd))
+            foreach (var item in data.OrderByDescending(e => e.MarketCapUsd).Take(10))
             {
                 Console.WriteLine($"  {item.Asset}, Volume24h: {item.Volume24h:N0}$, change 1h: {item.PercentChange1h:N2}%, change1d: {item.PercentChange24h:N2}%");
             }
@@ -81,10 +81,16 @@ namespace Lykke.Service.HeatmapDataWriter.DomainServices
         private async Task LoadCryptoIndex(string name, ICryptoIndexClient client)
         {
             var dict = new Dictionary<string, AssetInfo>();
+            var indexValue = 0m;
+            var indexChangeToday = 0m;
 
             #region load data
 
             var data = await client.Public.GetLastAsync();
+            var change = await client.Public.GetChangeAsync();
+
+            indexValue = data.Value;
+            indexChangeToday = (change[1].Item2 - change[0].Item2) / change[0].Item2;
 
             foreach (var price in data.MiddlePrices)
             {
@@ -117,7 +123,7 @@ namespace Lykke.Service.HeatmapDataWriter.DomainServices
             #region report data
 
             Console.WriteLine($"===== {name} =====");
-
+            Console.WriteLine($"Index value: {indexValue}, change today: {indexChangeToday:P2}");
             foreach (var item in dict.Values.OrderByDescending(e => e.Weight))
             {
                 Console.WriteLine($"  {item.Asset}: Price={item.Price}; \tWeight={item.Weight:P2}; \tMarketCup={item.MarketCap:N0}$");
