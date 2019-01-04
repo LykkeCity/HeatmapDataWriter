@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Lykke.Service.Dwh.Client;
 using Lykke.Service.HeatmapDataWriter.Settings;
 using Lykke.SettingsReader;
 
@@ -17,7 +18,10 @@ namespace Lykke.Service.HeatmapDataWriter.Modules
         {
             // Do not register entire settings in container, pass necessary settings to services which requires them
 
-            builder.RegisterType<Lykke.Service.Dwh.Client.AutofacExtensions>()
+            // Lykke.Service.Dwh.Client.IDwhClient
+            builder.RegisterLykkeServiceClient(_appSettings.CurrentValue.DwhServiceClient, null);
+            
+
         }
     }
 }

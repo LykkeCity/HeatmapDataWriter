@@ -9,5 +9,20 @@ namespace Lykke.Service.HeatmapDataWriter.Settings
     {
         public HeatmapDataWriterSettings HeatmapDataWriterService { get; set; }
         public DwhServiceClientSettings DwhServiceClient { get; set; }
+        public CryptoIndexServiceClientInstancesSettings CryptoIndexServiceClient { get; set; }
+    }
+
+
+
+    public class CryptoIndexServiceClientInstancesSettings
+    {
+        public CryptoIndexClientSettings[] Instances { get; set; }
+    }
+
+    public class CryptoIndexClientSettings
+    {
+        public string DisplayName { get; set; }
+
+        public string ServiceUrl { get; set; }
     }
 }

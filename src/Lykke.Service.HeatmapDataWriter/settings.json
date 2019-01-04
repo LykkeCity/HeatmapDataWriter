@@ -15,5 +15,15 @@
   },
   "MonitoringServiceClient": {
     "MonitoringServiceUrl": "http://monitoring-service.lykke-service.svc.cluster.local"
-  }
+  },
+  "CryptoIndexServiceClient": {
+    "Instances": [
+      {
+
+      },
+      {
+
+      }
+    ] 
+  } 
 }
