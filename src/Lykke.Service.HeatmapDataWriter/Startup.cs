@@ -31,7 +31,7 @@ namespace Lykke.Service.HeatmapDataWriter
                 options.Logs = logs =>
                 {
                     logs.AzureTableName = "HeatmapDataWriterLog";
-                    logs.AzureTableConnectionStringResolver = settings => settings.HeatmapDataWriterService.Db.LogsConnString;
+                    logs.AzureTableConnectionStringResolver = settings => settings.HeatmapDataWriterService.Db.LogsConnectionString;
 
                     // TODO: You could add extended logging configuration here:
                     /* 
