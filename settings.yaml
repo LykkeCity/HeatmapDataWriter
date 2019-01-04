@@ -9,6 +9,12 @@ DwhServiceClient:
   ServiceUrl:
     settings-key: DwhServiceUrl
 
+CryptoIndexServiceClient:
+  Instances:
+    settings-key: CryptoIndexService-Clients
+    types:
+    -JsonArray
+
 SlackNotifications:
   AzureQueue:
     ConnectionString:
