@@ -1,26 +1,31 @@
 HeatmapDataWriterService:
+  Name: Default
+
+  WalletId:
+    settings-key: LiquidityEngineService-WalletId
+
+  AssetsCacheExpirationPeriod: 00:10:00
+
   Db:
-    LogsConnString:
-      settings-key: HeatmapDataWriterService-LogsConnString
-        types:
-        - AzureTableStorage
-  AzureQueue:
-    ConnectionString:
-      settings-key: ConnectionString
+    LogsConnectionString:
+      settings-key: LiquidityEngineService-LogsConnectionString
       types:
       - AzureTableStorage
+
+DwhServiceClient:
+  ServiceUrl:
+    settings-key: DwhServiceUrl
+
 SlackNotifications:
-    AzureQueue:
-        ConnectionString:
-            settings-key: SlackNotificationsConnString
-            types:
-                - AzureTableStorage
-        QueueName:
-            settings-key: SlackQueueName
+  AzureQueue:
+    ConnectionString:
+      settings-key: SlackNotificationsConnString
+      types:
+      - AzureTableStorage
+    QueueName:
+      settings-key: SlackQueueName
 
 MonitoringServiceClient:
-    MonitoringServiceUrl:
-        settings-key: MonitoringServiceUrl
-
-
+  MonitoringServiceUrl:
+    settings-key: MonitoringServiceUrl
   
