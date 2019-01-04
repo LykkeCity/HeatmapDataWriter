@@ -4,6 +4,10 @@
     <Version>1.0.0</Version>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Lykke.Service.CryptoIndex.Client" Version="1.9.0" />
+    <PackageReference Include="Lykke.Service.Dwh.Client" Version="1.1.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Lykke.Service.HeatmapDataWriter.Domain\Lykke.Service.HeatmapDataWriter.Domain.csproj" />
   </ItemGroup>
 </Project>
